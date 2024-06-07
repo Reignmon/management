@@ -55,4 +55,63 @@
                 </div>
             </div>
         </div>
+        <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-12">
+
+                    <div class="alert alert-info">
+                        Reignmon Dizon
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body p-0">
+
+                            <table class="table text-center">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Firstname</th>
+                                        <th>Lastname</th>
+                                        <th>Birthday</th>
+                                        <th>Phone</th>
+                                        <th>Update and Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($employees as $item)
+                                    <tr>
+                                        <td>{{$item->id}}</td>
+                                        <td>{{$item->firstname}}</td>
+                                        <td>{{$item->lastname}}</td>
+                                        <td>{{$item->dateofbirth}}</td>
+                                        <td>{{$item->phone}}</td>
+                                        <td>
+                                            <a class="btn btn-info btn-sm" href="{{url('employe/'.$item->id.'/edit')}}">
+                                                <i class="fas fa-pencil-alt">
+                                                </i>
+                                                Edit
+                                            </a>
+    
+                                            <a class="btn btn-danger btn-sm" href="{{url('employe/'.$item->id.'/delete')}}">
+                                                <i class="fas fa-trash">
+                                                </i>
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+
+
+                                </tbody>
+                            </table>
+                        </div>
+                        <!-- /.card-body -->
+                    </div>
+
+                </div>
+            </div>
+            <!-- /.row -->
+        </div><!-- /.container-fluid -->
+    </div>
 @endsection

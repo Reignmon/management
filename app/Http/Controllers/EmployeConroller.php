@@ -7,9 +7,11 @@ use App\Models\EmployeeModel;
 
 class EmployeConroller extends Controller
 {
+   
     public function index(){
-    
-        return view('employe.index');
+        $employees =  EmployeeModel::get();
+
+        return view('employe.index',compact('employees'));
     }
 
     public function store(Request $request){
