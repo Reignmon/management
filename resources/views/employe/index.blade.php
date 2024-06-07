@@ -61,7 +61,7 @@
                 <div class="col-lg-12">
 
                     <div class="alert alert-info">
-                        Reignmon Dizon
+                    Emoloyee Management
                     </div>
 
                     <div class="card">
@@ -87,7 +87,7 @@
                                         <td>{{$item->dateofbirth}}</td>
                                         <td>{{$item->phone}}</td>
                                         <td>
-                                            <a class="btn btn-info btn-sm" href="{{url('employe/'.$item->id.'/edit')}}">
+                                            <a class="btn btn-info btn-sm" href="{{url('employe/'.$item->id.'/update')}}">
                                                 <i class="fas fa-pencil-alt">
                                                 </i>
                                                 Edit

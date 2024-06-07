@@ -7,7 +7,6 @@ use App\Models\EmployeeModel;
 
 class EmployeConroller extends Controller
 {
-   
     public function index(){
         $employees =  EmployeeModel::get();
 
@@ -15,15 +14,7 @@ class EmployeConroller extends Controller
     }
 
     public function store(Request $request){
-        $request->validate(
-            [
-                'firstname'=>'required|regex:/^[a-zA-Z]+$/u|max:255',
-                'lastname'=>'required|regex:/^[a-zA-Z]+$/u|max:255',
-                'dateofbirth'=>'required|date|before:today',
-                'phone'=>'required|regex:/^[0-9\-]+$/|max:11',
-            ]
-        );
-       
+    
         EmployeeModel::create([
             'firstname'=>$request->firstname,
             'lastname'=>$request->lastname,
@@ -32,4 +23,25 @@ class EmployeConroller extends Controller
         ]);
         return redirect('employe');
     }
+
+    public function edit(int $id){
+        $employees = EmployeeModel::findOrFail($id);
+        return view('employe.update', compact('employees'));
+    }
+
+    public function update(Request $request ,int $id){
+        EmployeeModel::findOrFail($id)->update([
+            'firstname'=>$request->firstname,
+            'lastname'=>$request->lastname,
+            'dateofbirth'=>$request->dateofbirth,
+            'phone'=>$request->phone,
+        ]);
+        return redirect('employe');
+    }
+    public function destroy(int $id){
+        $employees = EmployeeModel::findOrFail($id);
+        $employees->delete();
+        return redirect('employe');
+    }
+
 }
