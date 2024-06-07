@@ -8,6 +8,7 @@ use App\Http\Controllers\EmployeConroller;
 
 
 Route::get('employe', [EmployeConroller::class, 'index'])->name('employe.index');
+Route::post('employe', [EmployeConroller::class, 'store']);
 
 
 
